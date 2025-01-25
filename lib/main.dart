@@ -113,7 +113,7 @@ class _FlashLightAppState extends State<FlashLightApp> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black87,
+      backgroundColor: Colors.black,
       body: Stack(
         children: [
           Center(
@@ -121,9 +121,11 @@ class _FlashLightAppState extends State<FlashLightApp> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 IconButton(
-                  onPressed: () async {
-                    await _toggleLight();
-                  },
+                  onPressed: kIsWeb == true
+                      ? null
+                      : () async {
+                          await _toggleLight();
+                        },
                   icon: Icon(
                     Icons.lightbulb,
                     size: _bulbSize,
